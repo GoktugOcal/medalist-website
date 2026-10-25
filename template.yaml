@@ -1,0 +1,25 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Transform: AWS::Serverless-2016-10-31
+Description: MEDALIST LAB website on a single public Lambda Function URL
+
+Resources:
+  SiteFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: medalist-lab-site
+      Description: Serves the MEDALIST LAB SPA. /api is reserved for a later booking backend.
+      Handler: handler.handler
+      Runtime: nodejs20.x
+      Architectures:
+        - arm64
+      MemorySize: 256
+      Timeout: 10
+      CodeUri: .lambda
+      FunctionUrlConfig:
+        AuthType: NONE
+        InvokeMode: BUFFERED
+
+Outputs:
+  SiteUrl:
+    Description: Public website URL
+    Value: !GetAtt SiteFunctionUrl.FunctionUrl
