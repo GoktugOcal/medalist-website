@@ -1,4 +1,4 @@
-import heroBike from "../assets/hero-road-bike.jpg"
+import heroBike from "../assets/hero-road-bike-v1.2.jpg"
 
 export type ServiceIcon = "wrench" | "brake" | "cog" | "wheel" | "bearing"
 

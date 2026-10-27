@@ -42,7 +42,7 @@ function Hero() {
     <section id="home" className="relative isolate min-h-svh overflow-hidden">
       <img
         src={heroImage}
-        alt="Modern road bike on a burnt terracotta wall"
+        alt="Modern road bike standing on a burnt terracotta studio floor"
         className="absolute inset-0 h-full w-full object-cover object-[72%_center]"
       />
       <div className="absolute inset-0 bg-gradient-to-r from-ink via-ink/75 to-ink/15" />
