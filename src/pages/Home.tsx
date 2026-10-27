@@ -4,9 +4,9 @@ import { motion } from "framer-motion"
 import { ArrowRight, Mail, MapPin, Phone, Star } from "lucide-react"
 import { FadeIn } from "../components/FadeIn"
 import { SectionLabel } from "../components/SectionLabel"
-import { ServiceCard } from "../components/ServiceCard"
+import { ServiceCarousel } from "../components/ServiceCarousel"
 import { JournalCard } from "../components/JournalCard"
-import { aboutImage, heroImage, serviceCategories } from "../data/services"
+import { aboutImage, heroImage } from "../data/services"
 import { journal } from "../data/journal"
 import { shop } from "../data/shop"
 import { LogoMark } from "../components/Logo"
@@ -80,7 +80,7 @@ function Hero() {
               to="/booking"
               className="inline-flex items-center gap-2 rounded-full bg-lime px-6 py-3 font-semibold text-ink transition hover:shadow-[0_0_28px_rgba(209,208,103,0.4)]"
             >
-              Book a service
+              Book an appointment
               <ArrowRight size={16} />
             </Link>
             <a
@@ -108,26 +108,31 @@ function Hero() {
 
 function Services() {
   return (
-    <section id="services" className="relative border-t border-line py-24 md:py-32">
-      <div className="mx-auto max-w-6xl px-5 md:px-8">
+    <section id="services" className="relative scroll-mt-28 overflow-hidden border-t border-line py-24 md:py-32">
+      <LogoMark className="pointer-events-none absolute -right-16 top-10 w-[min(70vw,32rem)] opacity-[0.06]" />
+      <div className="relative mx-auto max-w-6xl px-5 md:px-8">
         <FadeIn>
           <SectionLabel index="01" label="Services" />
-          <div className="flex flex-col justify-between gap-6 md:flex-row md:items-start">
-            <h2 className="max-w-xl text-left font-display text-4xl font-bold tracking-tight md:text-5xl">
-              Lab work for every kilometer you ride
-            </h2>
-            <p className="max-w-sm text-left text-sm leading-relaxed text-mute">
-              Five benches of work. Pick a category, then the job — we confirm
-              the stand time when you book.
-            </p>
+          <div className="flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
+            <div className="max-w-xl">
+              <h2 className="text-left font-display text-4xl font-bold tracking-tight md:text-5xl">
+                Lab work for every kilometer you ride
+              </h2>
+              <p className="mt-4 max-w-sm text-left text-sm leading-relaxed text-mute">
+                Five benches of work. Pick a category, then the job — we confirm
+                the stand time when you book.
+              </p>
+            </div>
+            <Link
+              to="/services"
+              className="inline-flex shrink-0 items-center justify-center rounded-full border border-white/20 px-5 py-2.5 text-sm font-semibold text-white transition hover:border-lime/40 hover:text-lime"
+            >
+              Browse services
+            </Link>
           </div>
         </FadeIn>
-        <div className="mt-12 grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
-          {serviceCategories.map((category, index) => (
-            <FadeIn key={category.id} delay={index * 0.05}>
-              <ServiceCard category={category} index={index} />
-            </FadeIn>
-          ))}
+        <div className="mt-12">
+          <ServiceCarousel />
         </div>
       </div>
     </section>

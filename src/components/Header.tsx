@@ -5,10 +5,10 @@ import { Logo } from "./Logo"
 import { shop } from "../data/shop"
 
 const links = [
-  { label: "Home", hash: "home" },
-  { label: "Services", hash: "services" },
-  { label: "About Us", hash: "about" },
-  { label: "Contact Us", hash: "contact" },
+  { label: "Home", to: "/#home", hash: "home" },
+  { label: "Services", to: "/services" },
+  { label: "About Us", to: "/#about", hash: "about" },
+  { label: "Contact Us", to: "/#contact", hash: "contact" },
 ] as const
 
 export function Header() {
@@ -34,7 +34,7 @@ export function Header() {
       return
     }
 
-    const ids = links.map((link) => link.hash)
+    const ids = ["home", "services", "about", "contact"]
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -91,11 +91,15 @@ export function Header() {
 
         <nav className="hidden items-center gap-7 md:flex">
           {links.map((link) => {
-            const isActive = pathname === "/" && active === link.hash
+            const isActive =
+              link.to === "/services"
+                ? pathname.startsWith("/services") ||
+                  (pathname === "/" && active === "services")
+                : pathname === "/" && "hash" in link && active === link.hash
             return (
               <Link
-                key={link.hash}
-                to={`/#${link.hash}`}
+                key={link.label}
+                to={link.to}
                 className={`font-sans text-[13px] font-bold leading-none tracking-[0.06em] uppercase transition ${
                   isActive ? "text-lime" : "text-white hover:text-lime"
                 }`}
@@ -131,8 +135,8 @@ export function Header() {
           <div className="flex flex-col gap-3">
             {links.map((link) => (
               <Link
-                key={link.hash}
-                to={`/#${link.hash}`}
+                key={link.label}
+                to={link.to}
                 onClick={() => setOpen(false)}
                 className="py-2 font-sans text-sm font-bold tracking-[0.06em] text-white uppercase"
               >

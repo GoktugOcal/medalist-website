@@ -84,6 +84,15 @@ h3 {
   filter: invert(92%) hue-rotate(180deg) saturate(0.25) brightness(0.85);
 }
 
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
 input,
 textarea,
 select {

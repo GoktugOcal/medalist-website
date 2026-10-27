@@ -57,6 +57,9 @@ export function Footer() {
                 {social.label}
               </a>
             ))}
+            <Link to="/services" className="uppercase transition hover:text-lime">
+              Services
+            </Link>
             <Link to="/blog" className="uppercase transition hover:text-lime">
               Blog
             </Link>

@@ -31,6 +31,15 @@ function metaForPath(pathname: string): PageMeta {
     type: "website" as const,
   }
 
+  if (pathname === "/services") {
+    return {
+      ...defaults,
+      title: `Services — ${SITE_NAME}`,
+      description:
+        "Lab work for every kilometer you ride. Five benches of work at MEDALIST LAB in Auderghem — tune-ups, brakes, wheels, drivetrain, and bearings.",
+    }
+  }
+
   if (pathname === "/booking") {
     return {
       ...defaults,
